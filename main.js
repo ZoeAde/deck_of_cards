@@ -1,6 +1,7 @@
 var showCards = document.getElementById("cards");
 
 showCards.onclick = function(){
+  cards.innerHTML = "Redeal";
   var cardContainer = document.getElementById('container');
   cardContainer.innerHTML = "";
   displayCards();
@@ -12,12 +13,15 @@ showCards.onclick = function(){
 function createReset() {
   var btnReset = document.createElement("BUTTON");
   btnReset.innerHTML = "Reset";
+
   btnReset.setAttribute("id", "clearCards");
   document.body.insertBefore(btnReset, document.body.children[1]);
     btnReset.onclick = function() {
       document.getElementById('container').innerHTML = "";
       document.body.removeChild(btnReset);
+      cards.innerHTML = "Deal";
     };
+
   }
 
 function displayCards(){
