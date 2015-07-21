@@ -4,7 +4,21 @@ showCards.onclick = function(){
   var cardContainer = document.getElementById('container');
   cardContainer.innerHTML = "";
   displayCards();
+  if (document.getElementById("clearCards") === null) {
+    createReset();
+  }
 };
+
+function createReset() {
+  var btnReset = document.createElement("BUTTON");
+  btnReset.innerHTML = "Reset";
+  btnReset.setAttribute("id", "clearCards");
+  document.body.insertBefore(btnReset, document.body.children[1]);
+    btnReset.onclick = function() {
+      document.getElementById('container').innerHTML = "";
+      document.body.removeChild(btnReset);
+    };
+  }
 
 function displayCards(){
   var deck = newDeck();
@@ -44,14 +58,9 @@ function newDeck(){
 
 for(i = 0; i <= (ranks.length - 1); i++){
      for(j = 0; j <= suits.length - 1; j++){
-//       // deck.push({suits[i]}, ranks[i])l
-//       // debugger;
       ranks[i].suit = suits[j];
       deck.push({card: ranks[i].card, suit: ranks[i].suit});
  }
-//         //take rank and suit and put into key value pair
-//  console.log(suits[i]);
- // debugger;
  }
   return deck;
  };
@@ -69,8 +78,6 @@ function shuffleCards(newDeck){
     }
     return newDeck;
 };
-
-console.log(displayCards());
 
 
 
